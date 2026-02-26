@@ -2,24 +2,35 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>60ปี ดำรงศาสน์</title>
 
   <style>
+    /* ตั้งค่าให้ html และ body กินพื้นที่เต็มจอแบบ dynamic */
     html, body {
       margin: 0;
       padding: 0;
       width: 100%;
       height: 100%;
-      overflow: hidden; /* ป้องกัน scroll ซ้อน */
+      height: 100dvh; /* ปรับความสูงตามหน้าจอจริง */
+      overflow: hidden; 
       background-color: #eee;
     }
 
     iframe {
       width: 100%;
-      height: 100vh; /* ใช้ vh แทน vw */
+      /* ใช้ dvh เพื่อให้หักลบแถบเครื่องมือของ Browser ออก */
+      height: 100%;
+      height: 100dvh; 
       border: none;
       display: block;
+    }
+
+    /* สำหรับ Browser รุ่นเก่าที่ไม่รองรับ dvh ให้ใช้ 100% เป็นตัวสำรอง */
+    @supports not (height: 100dvh) {
+      html, body, iframe {
+        height: 100%;
+      }
     }
   </style>
 </head>
